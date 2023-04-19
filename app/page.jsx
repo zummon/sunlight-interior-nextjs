@@ -4,7 +4,7 @@ import services from '../lib/services.json';
 let title = 'Sunlight Interior';
 let description = 'Sapiente qui, enim quidem, aut corporis';
 
-export async function generateMetadata({}) {
+export function generateMetadata({}) {
   let image = { src: '' };
   let date = '';
 
@@ -31,7 +31,7 @@ export async function generateMetadata({}) {
   };
 }
 
-export default async function Index({}) {
+export default function ({}) {
   return (
     <>
       <div

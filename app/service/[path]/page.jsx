@@ -8,7 +8,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ServicePath({ params }) {
+export default function ({ params }) {
   let service = services.find((service) => service.path == params.path);
   let { title, description, date, image, images, price } = {
     ...model,

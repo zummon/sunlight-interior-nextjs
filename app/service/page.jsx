@@ -31,7 +31,7 @@ export async function generateMetadata({}) {
   };
 }
 
-export default async function ServiceIndex({}) {
+export default async function ({}) {
   return (
     <>
       <div className="uk-padding uk-text-center uk-box-shadow-medium">

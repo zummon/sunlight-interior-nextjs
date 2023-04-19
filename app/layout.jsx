@@ -3,7 +3,7 @@ import Header from './Header';
 import Script from 'next/script';
 import 'uikit/dist/css/uikit.min.css';
 
-export default function MyApp({ children }) {
+export default function ({ children }) {
   return (
     <html>
       <body>
