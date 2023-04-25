@@ -1,11 +1,10 @@
 Need updating
 
 The css currently used cdn links it should be imported from `npm`, overall it is working as it should be.
-[Made by zummon](https://zummon.page/)
 
-- Modify your data in `./lib/services.json` to add, edit and remove the site pages.
+Modify your data in `./lib/services.json` to add, edit and remove the site pages.
 
-## Dev tools
+### Dev tools
 
 [UIkit](https://getuikit.com/)
 
@@ -18,3 +17,7 @@ The css currently used cdn links it should be imported from `npm`, overall it is
 [Photo by Kien Tran from Pexels](https://www.pexels.com/photo/hotel-house-table-luxury-5814952/)
 
 [Photo by Nugroho Wahyu from Pexels](https://www.pexels.com/photo/brown-wooden-table-with-chair-3097112/)
+
+---
+
+[Made by zummon](https://zummon.page/)
