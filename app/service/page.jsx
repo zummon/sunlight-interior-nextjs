@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import services from '../../lib/services.json';
+import Link from "next/link";
+import services from "../../lib/services.json";
 
-let title = 'Service';
-let description = 'Fugit quasi ullam reiciendis totam culpa';
+let title = "Service";
+let description = "Fugit quasi ullam reiciendis totam culpa";
 
 export async function generateMetadata({}) {
-  let image = { src: '' };
-  let date = '';
+  let image = { src: "" };
+  let date = "";
 
   return {
     title,
@@ -34,7 +34,7 @@ export async function generateMetadata({}) {
 export default async function ({}) {
   return (
     <>
-      <div className="uk-padding uk-text-center uk-box-shadow-medium">
+      <div className="uk-padding uk-text-center">
         <div className="uk-flex uk-flex-wrap uk-flex-bottom uk-flex-center">
           <h1 className="uk-heading-medium">{title}</h1>
           <blockquote>
@@ -49,7 +49,7 @@ export default async function ({}) {
           <div className="uk-width-1-1 uk-width-1-2@s" key={`service-${index}`}>
             <div
               className="uk-cover-container uk-box-shadow-medium"
-              style={{ minHeight: '80vh' }}
+              style={{ minHeight: "80vh" }}
             >
               <img {...image} uk-cover="" />
               <div className="uk-position-center uk-position-large">
@@ -71,15 +71,15 @@ export default async function ({}) {
       </div>
 
       <div
-        className="uk-card uk-card-body uk-card-default uk-margin-auto-left uk-margin-auto-right"
-        style={{ width: '50vw' }}
+        className="uk-card uk-card-body uk-card-default uk-margin-auto-left uk-margin-auto-right uk-margin-large-top uk-text-center"
+        style={{ width: "50vw" }}
       >
         <h2 className="uk-heading-divider">Total Price</h2>
         <p className="uk-margin-remove-vertical uk-text-lead">
           Labor: {services.reduce((prev, curr) => prev + curr.price.labor, 0)}
         </p>
         <p className="uk-margin-remove-vertical uk-text-lead">
-          Material:{' '}
+          Material:{" "}
           {services.reduce((prev, curr) => prev + curr.price.material, 0)}
         </p>
       </div>

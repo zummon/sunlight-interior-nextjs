@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import services from '../lib/services.json';
+import Link from "next/link";
+import services from "../lib/services.json";
 
-let title = 'Sunlight Interior';
-let description = 'Sapiente qui, enim quidem, aut corporis';
+let title = "Sunlight Interior";
+let description = "Sapiente qui, enim quidem, aut corporis";
 
 export function generateMetadata({}) {
-  let image = { src: '' };
-  let date = '';
+  let image = { src: "" };
+  let date = "";
 
   return {
     title,
@@ -39,7 +39,7 @@ export default function ({}) {
         tabIndex="-1"
         uk-slideshow="animation: slide; autoplay: true; ratio: false; pause-on-hover: false"
       >
-        <ul className="uk-slideshow-items" style={{ minHeight: '80vh' }}>
+        <ul className="uk-slideshow-items" style={{ minHeight: "80vh" }}>
           {services
             .slice(0, 3)
             .map(({ path, image, title, description, date }, index) => (
@@ -49,7 +49,7 @@ export default function ({}) {
                   <Link
                     href={`/service/${path}`}
                     className="uk-display-block uk-card uk-card-body uk-card-default uk-card-hover uk-link-toggle"
-                    style={{ width: '50vw' }}
+                    style={{ width: "50vw" }}
                   >
                     <h3 className="uk-card-title uk-text-truncate">{title}</h3>
                     <p className="uk-text-truncate">{description}</p>
@@ -76,7 +76,7 @@ export default function ({}) {
         ></a>
       </div>
 
-      <div className="uk-padding uk-text-center uk-box-shadow-medium">
+      <div className="uk-padding uk-text-center">
         <div className="uk-flex uk-flex-wrap uk-flex-bottom uk-flex-center">
           <h1 className="uk-heading-medium">{title}</h1>
           <blockquote>

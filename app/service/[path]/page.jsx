@@ -1,6 +1,6 @@
-import model from '../../../lib/model.json';
-import services from '../../../lib/services.json';
-import Link from 'next/link';
+import model from "../../../lib/model.json";
+import services from "../../../lib/services.json";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   return services.map((service) => ({
@@ -17,7 +17,7 @@ export default function ({ params }) {
 
   return (
     <>
-      <div className="uk-padding uk-text-center uk-box-shadow-medium">
+      <div className="uk-padding uk-text-center">
         <div className="uk-flex uk-flex-wrap uk-flex-bottom uk-flex-center">
           <h1 className="uk-heading-medium">{title}</h1>
           <blockquote>
@@ -49,8 +49,8 @@ export default function ({ params }) {
 
       <Link
         href="/#contact"
-        className="uk-display-block uk-card uk-card-body uk-card-default uk-link-toggle uk-margin-auto-left uk-margin-auto-right"
-        style={{ width: '50vw' }}
+        className="uk-display-block uk-card uk-card-body uk-card-default uk-link-toggle uk-margin-auto-left uk-margin-auto-right uk-margin-large-top uk-text-center"
+        style={{ width: "50vw" }}
       >
         <h2 className="uk-heading-divider">Price</h2>
         <p className="uk-margin-remove-vertical uk-text-lead">

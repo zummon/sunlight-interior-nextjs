@@ -1,5 +1,3 @@
-Need updating
-
 The css currently used cdn links it should be imported from `npm`, overall it is working as it should be.
 
 Modify your data in `./lib/services.json` to add, edit and remove the site pages.
