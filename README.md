@@ -16,6 +16,4 @@ Modify your data in `./lib/services.json` to add, edit and remove the site pages
 
 [Photo by Nugroho Wahyu from Pexels](https://www.pexels.com/photo/brown-wooden-table-with-chair-3097112/)
 
----
 
-[Made by zummon](https://zummon.page/)
