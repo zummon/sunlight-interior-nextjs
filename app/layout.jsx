@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import Script from 'next/script';
-import 'uikit/dist/css/uikit.min.css';
+import Link from "next/link";
+import Script from "next/script";
+import "uikit/dist/css/uikit.min.css";
 // import 'uikit/dist/js/uikit.min.js';
 // import 'uikit/dist/js/uikit-icons.min.js';
 
@@ -8,7 +8,7 @@ export default function ({ children }) {
   return (
     <html>
       <body>
-        {/* Header */}
+        {/* header */}
         <div className="uk-padding-small uk-box-shadow-medium">
           <div className="uk-flex uk-flex-center uk-flex-middle">
             <div>
@@ -45,8 +45,11 @@ export default function ({ children }) {
             </div>
           </div>
         </div>
+
+        {/* body */}
         {children}
-        {/* Footer */}
+
+        {/* footer */}
         <div className="uk-section uk-section-large">
           <div className="uk-container uk-text-center">
             <div
