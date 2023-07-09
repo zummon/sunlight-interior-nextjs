@@ -87,9 +87,7 @@ export default function ({ children }) {
               <div>
                 <h3>Paragraph</h3>
                 <p>
-                  <a href="https://zummon.page/" target="_blank">
-                    Made by zummon
-                  </a>
+                  <span>Made by zummon (Teerapat Anantarattanachai)</span>
                 </p>
               </div>
 
