@@ -1,5 +1,3 @@
-const nextConfig = {
-  output: "export",
-};
+module.exports = {
 
-module.exports = nextConfig;
+};
