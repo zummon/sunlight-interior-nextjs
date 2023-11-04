@@ -1,5 +1,6 @@
 import Link from "next/link";
 import services from "../lib/services.json";
+import { useState } from "react";
 
 let title = "Sunlight Interior";
 let description = "Sapiente qui, enim quidem, aut corporis";
@@ -32,140 +33,150 @@ export function generateMetadata({}) {
 }
 
 export default function ({}) {
+  const [carousel, setCarousel] = useState()
+
   return (
     <>
-      <div
-        className="uk-position-relative"
-        tabIndex="-1"
-        uk-slideshow="animation: slide; autoplay: true; ratio: false; pause-on-hover: false"
-      >
-        <ul className="uk-slideshow-items" style={{ minHeight: "80vh" }}>
-          {services
-            .slice(0, 3)
-            .map(({ path, image, title, description, date }, index) => (
-              <li key={`service-${index}`}>
-                <img {...image} uk-cover="" />
-                <div className="uk-position-center uk-transition-scale-down uk-position-large">
-                  <Link
-                    href={`/service/${path}`}
-                    className="uk-display-block uk-card uk-card-body uk-card-default uk-card-hover uk-link-toggle"
-                    style={{ width: "50vw" }}
-                  >
-                    <h3 className="uk-card-title uk-text-truncate">{title}</h3>
-                    <p className="uk-text-truncate">{description}</p>
-                    <p className="uk-link-heading uk-text-right">
-                      <span className="">{date}</span>&#160;
-                      <span className="uk-text-large">&#8611;</span>
-                    </p>
-                  </Link>
-                </div>
-              </li>
-            ))}
-        </ul>
-        <a
-          className="uk-position-center-left uk-position-small uk-hidden-hover uk-light"
-          href="#"
-          uk-slidenav-previous=""
-          uk-slideshow-item="previous"
-        ></a>
-        <a
-          className="uk-position-center-right uk-position-small uk-hidden-hover uk-light"
-          href="#"
-          uk-slidenav-next=""
-          uk-slideshow-item="next"
-        ></a>
-      </div>
+<div className="p-10 text-center w-full flex-none">
+	<div className="flex flex-wrap items-baseline justify-center mb-10">
+		<h1 className="text-4xl lg:text-5xl xl:text-6xl">{title}</h1>
+		<span className="before:content-['—_']">summon</span>
+	</div>
+	<p className="text-2xl">{description}</p>
+</div>
 
-      <div className="uk-padding uk-text-center">
-        <div className="uk-flex uk-flex-wrap uk-flex-bottom uk-flex-center">
-          <h1 className="uk-heading-medium">{title}</h1>
-          <blockquote>
-            <footer>summon</footer>
-          </blockquote>
-        </div>
-        <p className="uk-text-large">{description}</p>
-      </div>
+<div className="h-full w-full flex items-center justify-center">
+	{ services.services .forEach((item,index)=>
+		<div className="" key={`carousel-${index}`}>
+			<abbr className="" title={item.title}>
+				<button
+					className="rounded-full inline-flex justify-center items-center w-9 h-9 {carousel ==
+					index
+						? 'text-black'
+						: 'text-gray-300 hover:text-gray-400 focus:text-gray-400'}"
+					onClick={() => {
+            setCarousel(index)
+					}}
+				>
+					<span className="sr-only">uikit icon nut</span>
+					<svg className="" width="20" height="20" viewBox="0 0 20 20"
+						><polygon
+							fill="none"
+							stroke="currentColor"
+							points="2.5,5.7 10,1.3 17.5,5.7 17.5,14.3 10,18.7 2.5,14.3"
+						/><circle
+							fill="none"
+							stroke="currentColor"
+							cx="10"
+							cy="10"
+							r="3.5"
+						/>
+						</svg>
+				</button>
+			</abbr>
+		</div>
+	)}
+</div>
 
-      <div className="uk-grid-match uk-grid-collapse" uk-grid="">
-        <div className="uk-width-5-6 uk-width-3-4@s uk-width-1-2@l" id="about">
-          <div className="uk-padding-small uk-margin-auto-vertical">
-            <div className="uk-flex uk-flex-wrap uk-flex-bottom">
-              <h2 className="uk-heading-medium">About</h2>
-              <blockquote>
-                <footer>me</footer>
-              </blockquote>
-            </div>
-            <p className="uk-text-large">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, repellat mollitia blanditiis nobis ratione rerum
-              culpa nihil enim!
-            </p>
-          </div>
-        </div>
-        <div className="uk-width-1-6 uk-width-1-4@s uk-width-1-2@l uk-cover-container uk-height-viewport uk-box-shadow-medium">
-          <img
-            src="https://images.pexels.com/photos/6585764/pexels-photo-6585764.jpeg?w=640"
-            alt="Living Room"
-            uk-cover=""
-          />
-        </div>
+<div className="relative" style={{"height": "65vh"}}>
+	{ services .forEach((item,index) =>
+		<div key={`service-${index}`}
+			className={`h-full w-full bg-cover bg-center flex justify-center absolute shadow-md ${carousel ==
+			index
+				? 'opacity-100 z-10'
+				: 'opacity-0'}`}
+			style={{"backgroundImage": `url(${item.image.src})`}}
+		>
+			<div className={`max-w-lg ${carousel == index ? 'block' : 'hidden'}`}>
+				<Link className="block bg-white shadow-md p-4" href={`/service/${item.path}`}>
+					<div className="flex flex-wrap items-baseline mb-4">
+						<h3 className="text-2xl">{item.title}</h3>
+						<span className="before:content-['—_'] text-gray-500">{item.date}</span>
+					</div>
+					<p className="mb-4 text-gray-500">{item.description}</p>
+					<div className="flex justify-end">
+						<span
+							className="block pl-2 pr-1 py-1 lg:pl-4 border-y-2 border-l-2 border-gray-500"
+            >
+              Price
+            </span>
+						<span
+							className="block pr-2 pl-1 py-1 lg:pr-4 border-y-2 border-r-2 border-gray-500"
+            >
+              {(item.price.labor + item.price.material).toLocaleString()}
+            </span>
+					</div>
+				</Link>
+			</div>
+		</div>
+	)}
+</div>
 
-        <div className="uk-width-1-6 uk-width-1-4@s uk-width-1-2@l uk-cover-container uk-height-viewport uk-box-shadow-medium">
-          <img
-            src="https://images.pexels.com/photos/3097112/pexels-photo-3097112.jpeg?w=640"
-            alt="Sunlight Interior"
-            uk-cover=""
-          />
-        </div>
-        <div
-          className="uk-width-5-6 uk-width-3-4@s uk-width-1-2@l"
-          id="contact"
-        >
-          <div className="uk-padding-small uk-margin-auto-vertical">
-            <div className="uk-flex uk-flex-wrap uk-flex-bottom">
-              <h2 className="uk-heading-medium">Contact</h2>
-              <blockquote>
-                <footer>us</footer>
-              </blockquote>
-            </div>
-            <form>
-              <label className="uk-display-block uk-margin">
-                <span className="uk-h3 uk-margin-small uk-display-block">
-                  Your e-mail
-                </span>
-                <input
-                  className="uk-input uk-form-large"
-                  placeholder="example@mail.com"
-                  type="email"
-                />
-              </label>
-              <label className="uk-display-block uk-margin">
-                <span className="uk-h3 uk-margin-small uk-display-block">
-                  Your name
-                </span>
-                <input
-                  className="uk-input uk-form-large"
-                  placeholder="Tanya"
-                  type="text"
-                />
-              </label>
-              <label className="uk-display-block uk-margin">
-                <span className="uk-h3 uk-margin-small uk-display-block">
-                  Your message
-                </span>
-                <textarea
-                  className="uk-textarea uk-form-large uk-resize-vertical"
-                  placeholder="I have a small house. How you can help?"
-                  rows="5"
-                ></textarea>
-              </label>
-              <button className="uk-button uk-button-secondary uk-button-large">
-                Send
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+<div className="flex items-center" id="about">
+	<div className="w-5/6 sm:w-3/4 lg:w-1/2 flex-none p-4">
+		<div className="flex flex-wrap items-baseline mb-10">
+			<h2 className="text-4xl lg:text-5xl xl:text-6xl">About</h2>
+			<span className="before:content-['—_']">me</span>
+		</div>
+		<p className="text-2xl">
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur,
+			repellat mollitia blanditiis nobis ratione rerum culpa nihil enim!
+		</p>
+	</div>
+	<div
+		className="w-1/6 sm:w-1/4 lg:w-1/2 flex-none shadow-md"
+		style="height: 80vh;"
+	>
+		<img
+			className="object-cover h-full w-full"
+			src="https://images.pexels.com/photos/6585764/pexels-photo-6585764.jpeg?w=1280"
+			alt="Living Room"
+		/>
+	</div>
+</div>
+
+<div className="flex items-center" id="contact">
+	<div
+		className="w-1/6 sm:w-1/4 lg:w-1/2 flex-none shadow-md"
+		style="height: 80vh;"
+	>
+		<img
+			className="object-cover h-full w-full"
+			src="https://images.pexels.com/photos/3097112/pexels-photo-3097112.jpeg?w=1280"
+			alt="Sunlight Interior"
+		/>
+	</div>
+	<div className="w-5/6 sm:w-3/4 lg:w-1/2 flex-none p-4">
+		<div className="flex flex-wrap items-baseline mb-10">
+			<h2 className="text-4xl lg:text-5xl xl:text-6xl">Contact</h2>
+			<span className="before:content-['—_']">us</span>
+		</div>
+		<div className="">
+			<label className="block mb-4">
+				<span className="text-2xl block mb-2"> Your e-mail </span>
+				<input
+					className="block w-full"
+					placeholder="example@mail.com"
+					type="email"
+				/>
+			</label>
+			<label className="block mb-4">
+				<span className="text-2xl block mb-2"> Your name </span>
+				<input className="block w-full" placeholder="Tanya" type="text" />
+			</label>
+			<label className="block mb-4">
+				<span className="text-2xl block mb-2"> Your message </span>
+				<textarea
+					className="block w-full"
+					placeholder="I have a small house. How you can help?"
+					rows="5"
+				/>
+			</label>
+			<button className="px-10 py-4 bg-gray-900 text-white"> Send </button>
+		</div>
+	</div>
+</div>
+
     </>
   );
 }
