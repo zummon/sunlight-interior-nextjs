@@ -50,10 +50,10 @@ export default function ({}) {
 		<div className="" key={`carousel-${index}`}>
 			<abbr className="" title={item.title}>
 				<button
-					className="rounded-full inline-flex justify-center items-center w-9 h-9 {carousel ==
+					className={`rounded-full inline-flex justify-center items-center w-9 h-9 ${carousel ==
 					index
 						? 'text-black'
-						: 'text-gray-300 hover:text-gray-400 focus:text-gray-400'}"
+						: 'text-gray-300 hover:text-gray-400 focus:text-gray-400'}`}
 					onClick={() => {
             setCarousel(index)
 					}}
@@ -125,7 +125,7 @@ export default function ({}) {
 	</div>
 	<div
 		className="w-1/6 sm:w-1/4 lg:w-1/2 flex-none shadow-md"
-		style="height: 80vh;"
+		style={{"height": "80vh"}}
 	>
 		<img
 			className="object-cover h-full w-full"
@@ -138,7 +138,7 @@ export default function ({}) {
 <div className="flex items-center" id="contact">
 	<div
 		className="w-1/6 sm:w-1/4 lg:w-1/2 flex-none shadow-md"
-		style="height: 80vh;"
+		style={{"height": "80vh"}}
 	>
 		<img
 			className="object-cover h-full w-full"
